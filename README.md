@@ -2,56 +2,63 @@
 
 ## Usersテーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
-| last_name          | string  | null: false |
-| first_name         | string  | null: false |
-| last_name_kana     | string  | null: false |
-| first_name_kana    | string  | null: false |
-| birth_year         | integer | null: false |
-| birth_month        | integer | null: false |
-| birth_day          | integer | null: false |
+| Column             | Type    | Options                  |
+| ------------------ | ------- | ------------------------ |
+| nickname           | string  | null: false              |
+| email              | string  | null: false, default: "" |
+| encrypted_password | string  | null: false, default: "" |
+| last_name          | string  | null: false              |
+| first_name         | string  | null: false              |
+| last_name_kana     | string  | null: false              |
+| first_name_kana    | string  | null: false              |
+| birthday           | date    | null: false              |
 
 ### Association
 - has_many :items
-- has_many :buys
+- has_many :Purchase_managements
 
 ## Itemsテーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| item_name    | string     | null: false                    |
-| info         | text       | null: false                    |
-| category     | integer    | null: false                    |
-| condition    | integer    | null: false                    |
-| sipping_cost | integer    | null: false                    |
-| user_area    | integer    | null: false                    |
-| sipping_day  | integer    | null: false                    |
-| price        | integer    | null: false                    |
-| user_id      | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| item_name       | string     | null: false                    |
+| info            | text       | null: false                    |
+| category_id     | integer    | null: false                    |
+| condition_id    | integer    | null: false                    |
+| sipping_cost_id | integer    | null: false                    |
+| user_area_id    | integer    | null: false                    |
+| sipping_day_id  | integer    | null: false                    |
+| price           | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ※imageはActiveStorageで実装
 
 ### Association
 - belongs_to :user
-- has_one :buy
+- has_one    :Purchase_management
+
+## Purchase_managementsテーブル
+
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| user          | references | null: false, foreign_key: true |
+| item          | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one    :Purchase_management
 
 ## Buysテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| postal_cade      | integer    | null: false                    |
-| prefectures      | integer    | null: false                    |
+| postal_cade      | string     | null: false                    |
+| prefectures_id   | integer    | null: false                    |
 | municipalities   | string     | null: false                    |
 | address          | string     | null: false                    |
 | building         | string     |                                |
-| telephone_number | integer    | null: false                    |
-| user_id          | references | null: false, foreign_key: true |
-| item_id          | references | null: false, foreign_key: true |
+| telephone_number | string     | null: false                    |
 
 ### Association
-- belongs_to :user
-- belongs_to :item
+- belongs_to :Purchase_management
