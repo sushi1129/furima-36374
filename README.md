@@ -51,14 +51,15 @@
 
 ## Buysテーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| postal_cade      | string     | null: false                    |
-| prefectures_id   | integer    | null: false                    |
-| municipalities   | string     | null: false                    |
-| address          | string     | null: false                    |
-| building         | string     |                                |
-| telephone_number | string     | null: false                    |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| postal_cade         | string     | null: false                    |
+| prefectures_id      | integer    | null: false                    |
+| municipalities      | string     | null: false                    |
+| address             | string     | null: false                    |
+| building            | string     |                                |
+| telephone_number    | string     | null: false                    |
+| purchase_management | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :purchase_management
