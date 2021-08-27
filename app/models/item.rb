@@ -1,11 +1,14 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
   belongs_to :sipping_cost
   belongs_to :prefectures
   belongs_to :sipping_day
-  has_one_attached :image
+  
 
 
   with_options presence: true do
