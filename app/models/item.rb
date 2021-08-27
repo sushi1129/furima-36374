@@ -1,15 +1,20 @@
 class Item < ApplicationRecord
   belongs_to :user
-  has_one_attached :imege
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :sipping_cost
+  belongs_to :prefectures
+  belongs_to :sipping_day
+  has_one_attached :image
+
 
   with_options presence: true do
-    validates :item_name
-    validates :info
-    validates :category_id
-    validates :sipping_cost_id
-    validates :prefectures_id
-    validates :sipping_day_id
+    validates :item_name, :info, :image
     validates :price
-    validates :imege
+
+    with_options numericality: { other_than: 0 , message: "can't be blank"} do
+      validates :category_id,    :condition_id,  :sipping_cost_id, 
+                :prefectures_id, :sipping_day_id
+    end
   end
 end
