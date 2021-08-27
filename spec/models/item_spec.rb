@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '新規出品登録' do
     context '新規出品登録できる場合' do
-      it "item_nameとinfo、image、category_id、condition_id、sipping_cost_id、prefectures_id、sipping_day_id、priceが存在すれば出品登録ができる" do
+      it "item_nameとinfo、image、category_id、condition_id、shipping_cost_id、prefectures_id、shipping_day_id、priceが存在すれば出品登録ができる" do
         expect(@item).to be_valid
       end
     end
@@ -43,10 +43,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
-      it "sipping_cost_idが空では登録できない" do
-        @item.sipping_cost_id = ''
+      it "shipping_cost_idが空では登録できない" do
+        @item.shipping_cost_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Sipping cost can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping cost can't be blank")
       end
 
       it "prefectures_idが空では登録できない" do
@@ -55,10 +55,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefectures can't be blank")
       end
 
-      it "sipping_day_idが空では登録できない" do
-        @item.sipping_day_id = ''
+      it "shipping_day_idが空では登録できない" do
+        @item.shipping_day_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Sipping day can't be blank")
+        expect(@item.errors.full_messages).to include("Shipping day can't be blank")
       end
 
       it "priceが空では登録できない" do
