@@ -31,31 +31,31 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
 
-      it "category_idが空では登録できない" do
+      it "category_idが0だと登録できない" do
         @item.category_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end
 
-      it "condition_idが空では登録できない" do
+      it "condition_idが0だと登録できない" do
         @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
 
-      it "shipping_cost_idが空では登録できない" do
+      it "shipping_cost_idが0だと登録できない" do
         @item.shipping_cost_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping cost can't be blank")
       end
 
-      it "prefectures_idが空では登録できない" do
+      it "prefectures_idが0だと登録できない" do
         @item.prefectures_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefectures can't be blank")
       end
 
-      it "shipping_day_idが空では登録できない" do
+      it "shipping_day_idが0だと登録できない" do
         @item.shipping_day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank")
@@ -74,13 +74,13 @@ RSpec.describe Item, type: :model do
       end
 
       it "priceが299以下の場合登録できない" do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
 
       it "priceが10,000,000以上の場合登録できない" do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is out of setting range")
       end
