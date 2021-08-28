@@ -1,3 +1,4 @@
+/*
 window. addEventListener('load',() => {
   const priceInput = document.getElementById("item-price");
   priceInput.addEventListener("input", () => {
@@ -8,3 +9,4 @@ window. addEventListener('load',() => {
     addProfitDom.innerHTML = Math.round(priceInput.value - Math.round(priceInput.value * 0.1));
   });
 });
+*/
