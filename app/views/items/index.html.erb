@@ -131,7 +131,7 @@
 
       <% if @items.length == 0 %>
         <li class='list'>
-          <%= link_to '#' do %>
+          <%= link_to root_path do %>
           <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
           <div class='item-info'>
             <h3 class='item-name'>
@@ -150,7 +150,7 @@
       <% else %>
         <% @items.each do |item|%>
         <li class='list'>
-          <%= link_to '#' do %>
+          <%= link_to item_path(item.id) do %>
           <%= image_tag item.image, class: "item-img" %>
           <%# if item.purchase_management.present? %>
             <%# <div class='sold-out'>
