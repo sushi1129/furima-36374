@@ -15,7 +15,7 @@
 
 ### Association
 - has_many :items
-- has_many :purchase_managements
+- has_many :order
 
 ## Itemsテーブル
 
@@ -35,9 +35,9 @@
 
 ### Association
 - belongs_to :user
-- has_one    :purchase_management
+- has_one    :order
 
-## Purchase_managementsテーブル
+## Ordersテーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -47,19 +47,19 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- has_one    :buy
+- has_one    :address
 
-## Buysテーブル
+## Addressesテーブル
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | postal_cade         | string     | null: false                    |
 | prefectures_id      | integer    | null: false                    |
-| municipalities      | string     | null: false                    |
-| address             | string     | null: false                    |
-| building            | string     |                                |
+| city                | string     | null: false                    |
+| house_number        | string     | null: false                    |
+| building_name       | string     |                                |
 | telephone_number    | string     | null: false                    |
 | purchase_management | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchase_management
+- belongs_to :order
