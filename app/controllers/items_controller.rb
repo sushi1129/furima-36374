@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :user_verification, only: [:edit, :destroy]
+  before_action :order_verification, only: [:edit]
 
   def index
     @items = Item.order('created_at DESC')
@@ -57,5 +58,11 @@ class ItemsController < ApplicationController
 
   def user_verification
     current_user.id == @item.user_id
+  end
+
+  def order_verification
+    if @item.order.present?
+      redirect_to root_path
+    end
   end
 end
