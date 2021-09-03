@@ -69,7 +69,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Telephone number is too short")
       end
 
-      it 'telephone_numberが9文字以下だと保存できない' do
+      it 'telephone_numberが12文字以上だと保存できない' do
         @order_address.telephone_number = '123456789012'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Telephone number is invalid. Input only half-width number")
