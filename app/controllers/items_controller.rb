@@ -25,9 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if user_verification == false
-      redirect_to root_path
-    end
+    redirect_to root_path if user_verification == false
   end
 
   def update
@@ -61,8 +59,6 @@ class ItemsController < ApplicationController
   end
 
   def order_verification
-    if @item.order.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.order.present?
   end
 end
